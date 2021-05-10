@@ -55,7 +55,7 @@ Check that the metrics are being properly exported by pointing your browser or
 a tool like curl to
 
 ```
-http://<yourveraip>:49451/data_request?id=lr_prometheus_metrics
+http://<yourveraip>:3480/data_request?id=lr_prometheus_metrics
 ```
 
 TODO: Publish this to the mios app store. Please contact me if you are
@@ -73,7 +73,7 @@ is needed. An example snippet to add to the `scrape_configs` section of your
     scrape_interval: 15s
     metrics_path: /data_request?id=lr_prometheus_metrics
     static_configs:
-      - targets: ['192.168.8.68:49451']
+      - targets: ['192.168.8.68:3480']
 ```
 
 Of course, you should change the IP address in the example (`192.168.8.68`) to
