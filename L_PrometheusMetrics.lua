@@ -13,12 +13,42 @@
 
     You should have received a copy of the GNU General Public License
     along with luup-prometheus.  If not, see <http://www.gnu.org/licenses/>.
+
+    // Metrics can be determined here:
+    Device categories (numbers): http://wiki.micasaverde.com/index.php/Luup_Dev
+ice_Categories
+    Everything else: http://wiki.micasaverde.com/index.php/Luup_UPnP_Variables_
+and_Actions
 --]]
 
 local DATA = {
     battery_level={
         {{3, 4, 7, 11, 12}, 'urn:micasaverde-com:serviceId:HaDevice1', 'BatteryLevel'},
         {'battery_level_percent', 'Battery level as a percentage of its capacity'}
+    },
+    device_last_update={
+        {{3, 4, 7, 11, 12}, 'urn:micasaverde-com:serviceId:HaDevice1', 'LastUpdate'},
+        {'device_last_update', 'Last time device updated'}
+    },
+    device_comm_failure={
+        {{3, 4, 7, 11, 12}, 'urn:micasaverde-com:serviceId:HaDevice1', 'CommFailure'},
+        {'device_comm_failure', 'Device comm Failure 0=ok, 1=not ok, 2=autherr'}
+    },
+    device_poll_ratings={
+        {{3, 4, 7, 11, 12}, 'urn:micasaverde-com:serviceId:HaDevice1', 'PollRatings'},
+        {'device_poll_ratings', 'This is a measure of how well the polls are doing, where 5.0 means that the last 50 polls were successful and 0.0 means that all the last 50 polls were unsuccessful.'}
+    },
+    device_wakeup_rating={
+        {{3, 4, 7, 11, 12}, 'urn:micasaverde-com:serviceId:HaDevice1', 'WakeupRatings'},
+        {'device_wakeup_ratings', ' This is a measure of how well the wakeups are being received, where 5.0 means that the we received the last 50 wakeups when they have suppose to be sent and 0.0 means that we didn\'t receive any of the 50 last wakeups that the device should have sent '}
+    },
+    device_poll_frequency={
+        {{3, 4, 7, 11, 12}, 'urn:micasaverde-com:serviceId:ZWaveDevice1', 'PollSettings'},
+        {'device_poll_frequency', 'This is the polling frequency for a node (i.e. the minimum number of seconds between two poll commands to the same node). If this variable doesn\'t exist or is blank, the default polling frequency set in the ZWaveNetwork1\'s PollFrequency variable will be used. If it\'s 0, polling will be disabled for this node.'}
+    },
+    device_health={
+        {{3, 4, 7, 11, 12}, 'urn:micasaverde-com:serviceId:ZWaveDevice1', 'Health'},
+        {'device_health', 'A rating from 0-5. A large number means that MiOS can communicate with it easily.'}
     },
     energy_sensor_counter={
         {{3, 21}, 'urn:micasaverde-com:serviceId:EnergyMetering1', 'KWH'},
@@ -39,6 +69,10 @@ local DATA = {
     security_sensor={
         {{4}, 'urn:micasaverde-com:serviceId:SecuritySensor1', 'Tripped'},
         {'security_sensor_tripped', 'Integer 1/0 indicating sensor trip'}
+    },
+    security_sensor_armed={
+        {{4}, 'urn:micasaverde-com:serviceId:SecuritySensor1', 'Armed'},
+        {'security_sensor_armed', 'Integer 1/0 indicating sensor armed'}
     },
     temperature_sensor={
         {{4, 5, 17, 666}, 'urn:upnp-org:serviceId:TemperatureSensor1', 'CurrentTemperature'},
