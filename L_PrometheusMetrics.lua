@@ -76,7 +76,7 @@ local DATA = {
     },
     temperature_sensor={
         {{4, 5, 17, 666}, 'urn:upnp-org:serviceId:TemperatureSensor1', 'CurrentTemperature'},
-        {'temperature_c', 'Temperature in degrees Celsius'}
+        {'temperature', 'Temperature in degrees'}
     },
 
     dimmer_state={

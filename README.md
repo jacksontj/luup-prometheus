@@ -13,7 +13,7 @@ sensors and devices:
 
 Sensors:
 
- - Temperature sensors: `temperature_c`
+ - Temperature sensors: `temperature`
  - Humidity sensors: `humidity_relative`
  - Light sensors: `light_lux`
  - Energy/electricity usage sensors: `electricity_used_kwh`,
